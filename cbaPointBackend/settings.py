@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-dpgfbzyv$d_ytyyr*)t6n3_%bli@4grd5!(c^e)l@y%qy3u_bo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = 'cbapoint.com'
 
 
 # Application definition
@@ -79,15 +79,22 @@ WSGI_APPLICATION = 'cbaPointBackend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'cbapoint',
+#         'USER': 'postgres',
+#         'PASSWORD': '1234',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cbapoint',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    "default": dj_database_url.config(
+        default=os.environ.get("DATABASE_URL", f"postgresql://cbapoint_user:WVh7zQJeaGaH16XtMnhnsc0Z3WYuHTv8@dpg-d3akl4s9c44c73dvaudg-a.oregon-postgres.render.com/cbapoint"),
+        conn_max_age=600,
+    )
 }
 
 
