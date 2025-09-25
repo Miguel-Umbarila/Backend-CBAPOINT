@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'cbaPointBackend.wsgi.application'
 
 DATABASES = {
     "default": dj_database_url.config(
-        default=os.environ.get("DATABASE_URL", f"postgresql://cbapoint_user:WVh7zQJeaGaH16XtMnhnsc0Z3WYuHTv8@dpg-d3akl4s9c44c73dvaudg-a.oregon-postgres.render.com/cbapoint"),
+        default=os.environ.get("DATABASE_URL", f"sqlite:///{BASE_DIR / 'db.sqlite3'}"),
         conn_max_age=600,
     )
 }
